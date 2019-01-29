@@ -5,9 +5,19 @@ const {GraphQLServer} = require('graphql-yoga');
 
 const typeDefs = `
   type Query {
-    info : String!,
-  }`;
+    info: String!
+    users: [User!]!
+    user(id: ID!) : User
+  }
+  type Mutation {
+    createUser(name: String!): User! 
+  }
 
+  type User {
+    id: ID!
+    name: String!
+  }
+  `;
 
 // Resolver
 const resolvers = {
